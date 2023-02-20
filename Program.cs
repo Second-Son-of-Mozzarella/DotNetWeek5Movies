@@ -7,7 +7,7 @@ var logger = LogManager.LoadConfiguration(path).GetCurrentClassLogger();
 
 
 string file = "movies.csv";
-
+// this one is up here is it updates everytime you run the program
 
 
 
@@ -38,14 +38,13 @@ if(response == 1){
 
      
 
-        
-     StreamWriter sw = new StreamWriter(file, true);
+    StreamReader sr = new StreamReader(file);
+    StreamWriter sw = new StreamWriter(file, true);
      Console.WriteLine("How many movies would you like to add");
      int movieNumb = Int32.Parse(Console.ReadLine());
    
 
-    String csvInfo = System.IO.File.ReadAllText(file);
-    List<string> csvCheck = Regex.Split(csvInfo, "\n").ToList();
+    
 
         for(int i = 0; i < movieNumb; i++){
             UID += 1;
@@ -64,19 +63,21 @@ if(response == 1){
             }
             
 
-            
                 sw.WriteLine($"{UID},{movieName},{string.Join("|", genres)}");
-            
-            
-            
-                    
 
+            
+            
+            
+            
+                
+
+                 
               
             
 
         }
 
     sw.Close();
-     
+    
 
 }
